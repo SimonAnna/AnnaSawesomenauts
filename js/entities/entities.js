@@ -13,6 +13,9 @@ game.PlayerEntity = me.Entity.extend({
 
         this.body.setVelocity(5, 20);
         this.facing = "right";
+        this.now = new Date().getTime();
+        this.lastHit = this.now;
+        this.lastAttack = new Date().getTime();
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
 
         this.renderable.addAnimation("idle", [0]);
@@ -22,6 +25,7 @@ game.PlayerEntity = me.Entity.extend({
         this.renderable.setCurrentAnimation("idle");
     },
     update: function(delta) {
+        this.now = new Date().getTime();
         if (me.input.isKeyPressed("right")) {
             //flip on x axis
             this.flipX(false);
@@ -45,7 +49,7 @@ game.PlayerEntity = me.Entity.extend({
         }
         //run...OR YOU DIE
         if (me.input.isKeyPressed("space")) {
-            this.body.setVelocity(10, 20);
+            this.body.setVelocity(20, 20);
         } else {
             this.body.setVelocity(5, 20);
         }
@@ -92,7 +96,10 @@ game.PlayerEntity = me.Entity.extend({
              this.body.vel.x = 0;
              this.pos.x = this.pos.x +1;
           }
-          
+          if(this.renderable.isCurrentAnimation("attack") && this.now - lastHit >= 400){
+             this.lastHit = this.now;
+                response.b.loseHealth();
+          }
         }
       
     }
@@ -177,6 +184,13 @@ game.EnemyBaseEntity = me.Entity.extend({
     },
     onCollision: function(){
         
+    },
+    loseHealth: function(){
+        this.health--;
+    },
+    lastHit: function(){
+        
     }
+   
     
 });
