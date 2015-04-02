@@ -10,12 +10,13 @@ game.PlayerEntity = me.Entity.extend({
                     return(new me.Rect(0, 0, 64, 64)).toPolygon();
                 }
             }]);
-        this.health=20;
+        this.health= game.data.playerHealth;
         this.type = "playerEntity";
-        this.body.setVelocity(5, 20);
+        this.body.setVelocity(game.data.playerMoveSpeed);
         this.facing = "right";
         this.now = new Date().getTime();
         this.lastHit = this.now;
+        this.dead = false;
         this.lastAttack = new Date().getTime();
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
 
@@ -27,7 +28,7 @@ game.PlayerEntity = me.Entity.extend({
     },
     update: function(delta) {
         if(this.health<=0){
-             me.game.world.removeChild(this);
+             this.dead = true;
         }
         this.now = new Date().getTime();
         if (me.input.isKeyPressed("right")) {
@@ -301,8 +302,13 @@ game.GameManager = Object.extend({
     },
     update: function() {
         this.now = new Date().getTime();
+        
+        if(game.data.player.dead){
+            me.game.world.removeChild(game.data.player);
+            me.state.current().resetPlayer = (10,0);
+        }
 
-        if (Math.round(thhis.now / 1000) % 10 === 0 && (this.now - this.lastCreep >= 1000)) {
+        if (Math.round(this.now / 1000) % 10 === 0 && (this.now - this.lastCreep >= 1000)) {
             this.lastCreep = this.now;
 
             var creepe = me.pool.pull("EnemyCreep", 1000, 0, {});
