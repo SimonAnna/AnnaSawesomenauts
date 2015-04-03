@@ -42,7 +42,7 @@ game.PlayerEntity = me.Entity.extend({
             this.body.vel.x -= this.body.accel.x * me.timer.tick;
             this.facing = "left";
         } else {
-            //this.body.vel.x = 0;
+            this.body.vel.x = 0;
         }
         //jump
         if (me.input.isKeyPressed('up')) {
@@ -123,7 +123,7 @@ game.PlayerEntity = me.Entity.extend({
                 }
             }
             
-            if (this.renderable.isCurrentAnimation("attack")&& this.now - lastHit >= 1000
+            if (this.renderable.isCurrentAnimation("attack")&& this.now - this.lastHit >= 1000
                     &&(Math.abs(ydif)<=40 &&
                     ((xdif)&& this.facing==="left") || ((xdif<0) && this.facing==="right")
                     )){
@@ -230,9 +230,9 @@ game.EnemyCreep = me.Entity.extend({
                 spriteheight: "64",
                 getShape: function() {
                     return (new me.Rect(0, 0, 32, 64)).toPolygon();
-                },
+                }
             }]);
-        this.health = 10
+        this.health = 10;
         this.alwaysUpdate = true;
         this.attacking = false;
         this.lastAttacking = new Date().getTime();
@@ -240,7 +240,7 @@ game.EnemyCreep = me.Entity.extend({
         this.now = new Date().getTime();
         this.body.setVelocity(3, 20);
 
-        this.type = "EnemyCreep"
+        this.type = "EnemyCreep";
 
         this.renderable.addAnimation("walk", [3, 4, 5], 80);
         this.renderable.setCurrentAnimation("walk");
@@ -253,7 +253,7 @@ game.EnemyCreep = me.Entity.extend({
         }
         
         this.now = new Date().getTime();
-        this.body.vel.x -= this.accel.x * me.timer.tick;
+        this.body.vel.x -= this.body.accel.x * me.timer.tick;
 
         me.collision.check(this, true, this.collideHandler.bind(this), true);
 
