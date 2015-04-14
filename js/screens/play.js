@@ -13,6 +13,14 @@ game.PlayScreen = me.ScreenObject.extend({
                 var gamemanager = me.pool.pull("GameManager", 0, 0, {});
                 me.game.world.addChild(gamemanager, 0);
                 
+                var heroDeathManager = me.pool.pull("HeroDeathManager", 0, 0, {});
+                me.game.world.addChild(heroDeathManager, 0);
+                
+                var expManager = me.pool.pull("ExpManager", 0, 0, {});
+                me.game.world.addChild(expManager, 0);
+                
+                
+                
                 me.input.bindKey(me.input.KEY.RIGHT, "right");
                 me.input.bindKey(me.input.KEY.LEFT, "left");
                 me.input.bindKey(me.input.KEY.UP, "up");
@@ -35,5 +43,7 @@ game.PlayScreen = me.ScreenObject.extend({
         resetPlayer: function(x,y){
             game.data.player = me.pool.pull("player", x, y, {});
                 me.game.world.addChild(game.data.player, 5);
+                
+                
         }
 });
