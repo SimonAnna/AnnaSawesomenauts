@@ -8,6 +8,9 @@ game.PlayScreen = me.ScreenObject.extend({
                 
                 me.levelDirector.loadLevel("level01");
                 
+                console.log(game.data.exp);
+        console.log(game.data.exp2);
+                
                 this.resetPlayer(0,240);
                 
                 var gamemanager = me.pool.pull("GameManager", 0, 0, {});

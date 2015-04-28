@@ -11,6 +11,7 @@
         {name: "creep1", type:"image", src: "data/img/brainmonster.png"},
         {name: "sprieattack", type:"image", src: "data/img/sprieattack.png"},
         {name: "title", type:"image", src: "data/img/title.png"},
+        {name: "exp-screen", type:"image", src: "data/img/spend.png"},
 
 	/* Atlases 
 	 * @example
