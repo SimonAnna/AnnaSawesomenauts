@@ -13,7 +13,7 @@ game.resources = [
     {name: "loadpic", type: "image", src: "data/img/loadpic.png"},
     {name: "spend", type: "image", src: "data/img/spend.png"},
     {name: "load", type: "image", src: "data/img/loadpic.png"},
-    {name: "new", type: "image", src: "data/newpic.png"},
+    {name: "new", type: "image", src: "data/img/newpic.png"},
     /* Atlases 
      * @example
      * {name: "example_tps", type: "tps", src: "data/img/example_tps.json"},
