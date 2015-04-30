@@ -90,7 +90,7 @@ game.PlayerEntity = me.Entity.extend({
         }
         //run...OR YOU DIE
         if (me.input.isKeyPressed("space")) {
-            this.body.setVelocity(20, 20);
+            this.body.setVelocity(10, 20);
         } else {
             this.body.setVelocity(5, 20);
         }

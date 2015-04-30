@@ -22,8 +22,14 @@ game.PlayScreen = me.ScreenObject.extend({
                 var expManager = me.pool.pull("ExpManager", 0, 0, {});
                 me.game.world.addChild(expManager, 0);
                 
+                var spendGold = me.pool.pull("SpendGold", 0, 0, {});
+                me.game.world.addChild(spendGold, 0);
                 
                 
+                me.input.bindKey(me.input.KEY.ENTER, "buy");
+                me.input.bindKey(me.input.KEY.Q, "skill1");
+                me.input.bindKey(me.input.KEY.W, "skill2");
+                me.input.bindKey(me.input.KEY.E, "skill3");
                 me.input.bindKey(me.input.KEY.RIGHT, "right");
                 me.input.bindKey(me.input.KEY.LEFT, "left");
                 me.input.bindKey(me.input.KEY.UP, "up");

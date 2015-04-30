@@ -24,6 +24,9 @@ var game = {
                 exp2:0,
                 exp3:0,
                 win:"",
+                pausePos: "",
+                buyscreen: "",
+                buytext: "",
                 
 	},
 	
@@ -69,6 +72,7 @@ var game = {
             me.pool.register("PlayerAttack", game.PlayerAttack, true);
             me.pool.register("HeroDeathManager", game.HeroDeathManager);
             me.pool.register("ExpManager", game.ExpManager);
+            me.pool.register("SpendGold", game.SpendGold);
             
             
 		me.state.set(me.state.MENU, new game.TitleScreen());
