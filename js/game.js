@@ -19,7 +19,13 @@ var game = {
                 gameManager: "",
                 player: "",
                 exp: 0,
-                gold:0,
+                gold:1000000000000000000000,
+                s1:0,
+                s2:0,
+                s3:0,
+                s4:0,
+                s5:0,
+                s6:0,
                 exp1:0,
                 exp2:0,
                 exp3:0,
@@ -46,9 +52,11 @@ var game = {
 		});
 	}
         
-        me.save.add({exp: 0, exp1: 0,exp2: 0,exp3: 0,exp4: 0});
+        
 
         me.state.SPEND = 112;
+        me.state.LOAD = 113;
+        me.state.NEW = 114;
 	// Initialize the audio.
 	me.audio.init("mp3,ogg");
 
@@ -78,6 +86,8 @@ var game = {
 		me.state.set(me.state.MENU, new game.TitleScreen());
 		me.state.set(me.state.PLAY, new game.PlayScreen());
                 me.state.set(me.state.SPENDEXP, new game.SpendExp());
+                me.state.set(me.state.LOAD, new game.LoadProfile());
+                me.state.set(me.state.NEW, new game.NewProfile());
                 
 
 		// Start the game.

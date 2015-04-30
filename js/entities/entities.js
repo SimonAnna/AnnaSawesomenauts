@@ -25,6 +25,7 @@ game.PlayerEntity = me.Entity.extend({
     setAtributes: function() {
         this.health = game.data.playerHealth;
         this.body.setVelocity(game.data.playerMoveSpeed);
+        this.data.playerAttack;
     },
     setPlayerTimers: function() {
         this.now = new Date().getTime();
