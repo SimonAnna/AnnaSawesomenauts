@@ -95,17 +95,22 @@ require_once("php/controller/create-db.php");
         </script>
         <script>
             $("#register".bind("click", function() {
-                $.ajax({
-                    type: "POST",
+            $.ajax({
+            type: "POST",
                     url: "php/controller/create-user.php",
                     data: {
-                        //passes username/password
-                        username: $("#username").val(),
-                        password: $("#password").val(),
+                    //passes username/password
+                    username: $("#username").val(),
+                            password: $("#password").val(),
                     },
                     dataType: "text"
-                })
-                        .success(function())
+            })
+                    .success(function(response){
+
+                    })
+                    .fail(function(response){
+
+                    });
             });
         </script>
     </body>
