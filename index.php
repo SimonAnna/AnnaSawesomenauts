@@ -109,7 +109,7 @@ require_once("php/controller/create-db.php");
 
                     })
                     .fail(function(response){
-
+                        alert("fail");
                     });
             });
         </script>
