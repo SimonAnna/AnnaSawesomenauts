@@ -106,7 +106,11 @@ require_once("php/controller/create-db.php");
                     dataType: "text"
             })
                     .success(function(response){
-                    if(response==="true")
+                    if(response==="true"){
+                        
+                    }else{
+                        
+                    }
                     })
                     .fail(function(response){
                         alert("fail");
